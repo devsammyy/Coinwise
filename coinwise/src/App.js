@@ -7,15 +7,16 @@ import Header from './Components/Header/Header'
 
 const App = () => {
   const [menu, setMenu] = useState('home');
-  console.log(menu)
+  const [showMenu, setShowMenu] = useState(false);
+  console.log(showMenu)
   return (
     <div className='h-[100vh] w-full bg-white' id='main'>
       <div>
           <BrowserRouter>
-            <Header />
+            <Header setShowMenu={setShowMenu} />
             <div className='flex h-[96.5vh]'>
               <div className='bg-primaryBg absolute left-0 top-0 bottom-0'>
-                <Navbar menu={menu} setMenu={setMenu} />
+                <Navbar showMenu={showMenu} setShowMenu={setShowMenu} menu={menu} setMenu={setMenu} />
               </div>
               <div className=''>
                 <Routes>
