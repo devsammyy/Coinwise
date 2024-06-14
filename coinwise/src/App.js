@@ -13,16 +13,14 @@ const App = () => {
     <div className='h-[100vh] w-full bg-white' id='main'>
       <div>
           <BrowserRouter>
-            <Header setShowMenu={setShowMenu} />
-            <div className='flex h-[96.5vh]'>
-              <div className='bg-primaryBg absolute left-0 top-0 bottom-0'>
+            <Header showMenu={showMenu} setShowMenu={setShowMenu} />
+            <div className='flex h-[96vh]'>
+              <div className={`bg-primaryBg absolute left-0 top-0 bottom-0 z-50 ${showMenu ? '' : 'transform -translate-x-full md:translate-x-0'} duration-300 ease-in-out md:static md:z-0`}>
                 <Navbar showMenu={showMenu} setShowMenu={setShowMenu} menu={menu} setMenu={setMenu} />
               </div>
-              <div className=''>
                 <Routes>
-                  <Route path='/home' element={<Home/>} />
+                  <Route path='/' element={<Home />} />
                 </Routes>
-              </div>
             </div>
             <Footer />
           </BrowserRouter>
