@@ -4,6 +4,8 @@ import Navbar from './Components/Navbar/Navbar'
 import Home from './Pages/Home/Home'
 import Footer from './Components/Footer/Footer'
 import Header from './Components/Header/Header'
+import 'boxicons/css/boxicons.min.css';
+
 
 const App = () => {
   const [menu, setMenu] = useState('home');
@@ -15,7 +17,7 @@ const App = () => {
           <BrowserRouter>
             <Header showMenu={showMenu} setShowMenu={setShowMenu} />
             <div className='flex h-[96vh]'>
-              <div className={`bg-primaryBg absolute left-0 top-0 bottom-0 z-50 ${showMenu ? '' : 'transform -translate-x-full md:translate-x-0'} duration-300 ease-in-out md:static md:z-0`}>
+              <div className={`bg-primaryBg absolute left-0 top-0 bottom-0 w-[220px] z-50 ${showMenu ? '' : 'transform -translate-x-full md:translate-x-0'} duration-300 ease-in-out md:static md:z-0`}>
                 <Navbar showMenu={showMenu} setShowMenu={setShowMenu} menu={menu} setMenu={setMenu} />
               </div>
                 <Routes>
