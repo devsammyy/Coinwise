@@ -9,20 +9,20 @@ const Navbar = ({menu, setMenu, showMenu, setShowMenu}) => {
         <div className='px-3'>
           <FaTimes onClick={() => setShowMenu(!showMenu)} className='md:hidden' size={22} style = {{marginBottom: '40px', cursor: 'pointer', color: 'white' }}/>
         </div>
-        <nav className='list-none text-primaryColor flex flex-col'>
-          <Link to={'/'} onClick={() => setMenu('home')} className={`text-lg font-bold px-3 mb-3 flex items-center ${menu === 'home'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>
+        <nav className='list-none text-primaryColor flex flex-col text-sm'>
+          <Link to={'/home'} onClick={() => setMenu('home')} className={`px-3 mb-4 h-7 flex items-center ${menu === 'home'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>
             <i class='bx bx-home-alt mr-4'></i>
             <p>Home</p>
           </Link>
-          <Link onClick={() => setMenu('cryptocurriencies')} className={`text-lg font-bold px-3 mb-3 flex items-center ${menu === 'cryptocurriencies'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>
+          <Link to={'/cryptocurrencies'} onClick={() => setMenu('cryptocurriencies')} className={`px-3 mb-4 h-7 flex items-center ${menu === 'cryptocurriencies'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>
             <i class='bx bxs-coin-stack mr-4'></i>
             <p>Cryptocurriencies</p>
           </Link>
-          <Link onClick={() => setMenu('exchange')} className={`text-lg font-bold px-3 mb-3 flex items-center ${menu === 'exchange'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>
+          <Link to={'/exchanges'} onClick={() => setMenu('exchange')} className={`px-3 mb-4 h-7 flex items-center ${menu === 'exchange'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>
             <i class='bx bx-wallet-alt mr-4'></i>
             <p>Exchange</p>
           </Link>
-          <Link onClick={() => setMenu('news')} className={`text-lg font-bold px-3 mb-3 flex items-center ${menu === 'news'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>
+          <Link to={'/news'} onClick={() => setMenu('news')} className={`px-3 mb-4 h-7 flex items-center ${menu === 'news'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>
             <i class='bx bx-news mr-4'></i>
             <p>News</p>
           </Link>
