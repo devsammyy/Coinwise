@@ -10,7 +10,8 @@ import CryptoDetails from './Pages/CryptoDetails/CryptoDetails'
 import Exchanges from './Pages/Exchanges/Exchanges'
 import News from './Pages/News/News'
 import store from './App/store'
-import { provider } from 'react-redux'
+import { Provider } from 'react-redux'
+import BlogContextProvider from './Context/BlogContext'
 
 const App = () => {
   const [menu, setMenu] = useState('home');
@@ -19,7 +20,8 @@ const App = () => {
   return (
     <div className='h-[100vh] w-full bg-white' id='main'>
       <div>
-        <provider store={store}>
+        {/* <Provider store={store}> */}
+        <BlogContextProvider>
           <BrowserRouter>
             <Header showMenu={showMenu} setShowMenu={setShowMenu} />
             <div className='flex h-[100vh]'>
@@ -39,7 +41,8 @@ const App = () => {
               </div>
             </div>
           </BrowserRouter>
-        </provider>
+        </BlogContextProvider>
+        {/* </Provider> */}
       </div>
     </div>
   )
