@@ -6,16 +6,20 @@ export const BlogContext = createContext(null);
 const StoreContextProvider = (props) => {
 
   // API response will be saved in this state
-  const [cryptoData, setcryptoData] = useState(null)
-  console.log(cryptoData);
+  const [cryptoData, setcryptoData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [cryptoCoins, setCryptoCoins] = useState([])
 
   useEffect(() => {
 
     // Create a function to make API request
-    const fetchData = async () => {
+    const fetchCoinData = async () => {
+      // This code snippet is gotten from rapidAPI
+      // Paste the cpoied code and use it to make the API call 
       const options = {
         method: 'GET',
-        url: 'https://coinranking1.p.rapidapi.com/stats',
+        url: 'https://coinranking1.p.rapidapi.com/coins',
         params: {
           referenceCurrencyUuid: 'yhjMzLPhuIDl'
         },
@@ -28,17 +32,26 @@ const StoreContextProvider = (props) => {
       // Use axios to make API request
       try {
         const response = await axios.request(options);
-        setcryptoData(response.data.data)
+        setcryptoData(response?.data?.data);
+        setCryptoCoins(response?.data?.data?.coins || [])
+        setLoading(false)
       } catch (error) {
-        console.log(error.message)
+        setLoading(false);
+        setError(error);
       }
     }
 
-    // Call the fetchData function
-    fetchData();
+    // Call the fetchCoinData function
+    fetchCoinData();
   }, [])
 
-  const contextValue = {}
+  const contextValue = {
+    cryptoData,
+    loading,
+    error,
+    cryptoCoins,
+    setCryptoCoins
+  }
 
   return (
     <BlogContext.Provider value={contextValue}>

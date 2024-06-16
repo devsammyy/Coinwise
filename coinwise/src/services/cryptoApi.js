@@ -18,15 +18,3 @@ export const cryptoApi = createApi({
     })
   })
 })
-
-// const options = {
-//   method: 'GET',
-//   url: 'https://coinranking1.p.rapidapi.com/stats',
-//   params: {
-//     referenceCurrencyUuid: 'yhjMzLPhuIDl'
-//   },
-//   headers: {
-//     'x-rapidapi-key': '0d93fb5ea1msh5470af294a84a62p1b2147jsn2376be21262b',
-//     'x-rapidapi-host': 'coinranking1.p.rapidapi.com'
-//   }
-// };
