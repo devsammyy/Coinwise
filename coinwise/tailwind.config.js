@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       colors: {
         primaryBg: '#00001a',
-        primaryColor: '#0066cc',
+        primaryColor: '#47a3ff',
         grayLight: '#d7dbd8',
       },
       boxShadow: {

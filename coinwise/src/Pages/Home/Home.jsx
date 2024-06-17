@@ -1,13 +1,12 @@
 import React, { useContext } from 'react'
-import { BlogContext } from '../../Context/BlogContext'
+import { CryptoContext } from '../../Context/CryptoContext'
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
-import News from '../News/News';
 
 const Home = ({ setMenu }) => {
   // Destructure the context value needed
-  const { cryptoData, loading, error } = useContext(BlogContext);
+  const { cryptoData, loading, error } = useContext(CryptoContext);
 
   // If fetching is in process
   if (loading) return <div className='min-h-[81.2vh] text-lg'>Loading...</div>;
@@ -42,15 +41,10 @@ const Home = ({ setMenu }) => {
 
       <div className='mt-5 md:mt-14'>
         <div className='flex items-baseline justify-between'>
-          <h2 className='text-sm md:text-xl md:mb-4'>Top 10 Cryptocurrencies In The World</h2>
+          <h2 className='text-sm mb-4 md:text-xl md:mb-4'>Top 10 Cryptocurrencies In The World</h2>
           <h2 className='text-xs md:text-sm text-primaryColor cursor-pointer' onClick={() => setMenu('cryptocurriencies')}><Link to={'/cryptocurrencies'}>Show more</Link></h2>
         </div>
         <Cryptocurrencies simplified count={10} />
-        <div className='flex items-baseline justify-between mt-5  md:mt-14'>
-          <h2 className='text-sm'>Latest Crypto News</h2>
-          <h2 className='text-xs text-primaryColor cursor-pointer'><Link to={'/news'}>Show more</Link></h2>
-        </div>
-        <News simplified />
       </div>
     </div>
   )

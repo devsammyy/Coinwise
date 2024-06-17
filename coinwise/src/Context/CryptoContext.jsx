@@ -1,15 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
-export const BlogContext = createContext(null);
+export const CryptoContext = createContext(null);
 
-const StoreContextProvider = (props) => {
+const CryptoContextProvider = (props) => {
 
   // API response will be saved in this state
   const [cryptoData, setcryptoData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cryptoCoins, setCryptoCoins] = useState([])
+  const [cryptoCoins, setCryptoCoins] = useState([]);
 
   useEffect(() => {
 
@@ -54,10 +54,10 @@ const StoreContextProvider = (props) => {
   }
 
   return (
-    <BlogContext.Provider value={contextValue}>
+    <CryptoContext.Provider value={contextValue}>
       {props.children}
-    </BlogContext.Provider>
+    </CryptoContext.Provider>
   )
 }
 
-export default StoreContextProvider;
+export default CryptoContextProvider;

@@ -5,9 +5,9 @@ import { FaTimes } from 'react-icons/fa'
 const Navbar = ({menu, setMenu, showMenu, setShowMenu}) => {
   return (
     <>
-      <header className='w-full h-[55px] pt-5 md:py-20'>
-        <div className='px-3'>
-          <FaTimes onClick={() => setShowMenu(!showMenu)} className='md:hidden' size={22} style = {{marginBottom: '40px', cursor: 'pointer', color: 'white' }}/>
+      <header className='w-full h-[55px] pt-3 md:py-20'>
+        <div className='px-[20px]'>
+          <FaTimes onClick={() => setShowMenu(!showMenu)} className='md:hidden' size={22} style = {{marginBottom: '35px', cursor: 'pointer', color: 'white' }}/>
         </div>
         <nav className='list-none text-primaryColor flex flex-col text-sm'>
           <Link to={'/home'} onClick={() => setMenu('home')} className={`px-3 mb-4 h-7 flex items-center ${menu === 'home'? 'bg-primaryColor text-primaryBg' : ''} duration-300 ease-in-out`}>

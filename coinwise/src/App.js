@@ -9,7 +9,7 @@ import Cryptocurrencies from './Pages/Cryptocurrencies/Cryptocurrencies'
 import CryptoDetails from './Pages/CryptoDetails/CryptoDetails'
 import Exchanges from './Pages/Exchanges/Exchanges'
 import News from './Pages/News/News'
-import BlogContextProvider from './Context/BlogContext'
+import CryptoContextProvider from './Context/CryptoContext'
 
 const App = () => {
   const [menu, setMenu] = useState('home');
@@ -17,8 +17,7 @@ const App = () => {
   return (
     <div className='h-[100vh] w-full bg-white' id='main'>
       <div>
-        {/* <Provider store={store}> */}
-        <BlogContextProvider>
+        <CryptoContextProvider>
           <BrowserRouter>
             <Header showMenu={showMenu} setShowMenu={setShowMenu} />
             <div className='flex h-[100vh]'>
@@ -40,8 +39,7 @@ const App = () => {
               </div>
             </div>
           </BrowserRouter>
-        </BlogContextProvider>
-        {/* </Provider> */}
+        </CryptoContextProvider>
       </div>
     </div>
   )
