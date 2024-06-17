@@ -7,14 +7,18 @@ const CryptoContextProvider = (props) => {
 
   // API response will be saved in this state
   const [cryptoData, setcryptoData] = useState(null);
+  const [cryptoCoins, setCryptoCoins] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cryptoCoins, setCryptoCoins] = useState([]);
+
+  // This state will save the coinId of any coin that is clicked
+  const [cryptoDetails, setCryptoDetails] = useState(null);
 
   useEffect(() => {
 
     // Create a function to make API request
-    const fetchCoinData = async () => {
+    const fetchCoinData = async (coinId) => {
       // This code snippet is gotten from rapidAPI
       // Paste the cpoied code and use it to make the API call 
       const options = {
@@ -35,6 +39,7 @@ const CryptoContextProvider = (props) => {
         setcryptoData(response?.data?.data);
         setCryptoCoins(response?.data?.data?.coins || [])
         setLoading(false)
+        setCryptoDetails(response?.data?.data?.coin)
       } catch (error) {
         setLoading(false);
         setError(error);
@@ -50,7 +55,9 @@ const CryptoContextProvider = (props) => {
     loading,
     error,
     cryptoCoins,
-    setCryptoCoins
+    setCryptoCoins,
+    cryptoDetails,
+    setCryptoDetails
   }
 
   return (
