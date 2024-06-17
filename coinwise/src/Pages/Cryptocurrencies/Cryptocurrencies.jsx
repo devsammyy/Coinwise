@@ -13,7 +13,7 @@ const Cryptocurrencies = ({ simplified, count=100 }) => {
 
   // State for search bar
   const [searchCoin, setSearchCoin] = useState('');
-
+  
   useEffect(() => {
       const filteredData = cryptoCoins.filter((coin) => coin.name.toLowerCase().includes(searchCoin.toLowerCase()));
       setFilteredCoins(filteredData);

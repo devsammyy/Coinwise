@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 export const CryptoContext = createContext(null);
@@ -16,9 +16,8 @@ const CryptoContextProvider = (props) => {
   const [cryptoDetails, setCryptoDetails] = useState(null);
 
   useEffect(() => {
-
     // Create a function to make API request
-    const fetchCoinData = async (coinId) => {
+    const fetchCoinData = async () => {
       // This code snippet is gotten from rapidAPI
       // Paste the cpoied code and use it to make the API call 
       const options = {
@@ -39,7 +38,6 @@ const CryptoContextProvider = (props) => {
         setcryptoData(response?.data?.data);
         setCryptoCoins(response?.data?.data?.coins || [])
         setLoading(false)
-        setCryptoDetails(response?.data?.data?.coin)
       } catch (error) {
         setLoading(false);
         setError(error);
@@ -50,6 +48,29 @@ const CryptoContextProvider = (props) => {
     fetchCoinData();
   }, [])
 
+  // Fetch details for a specific coin
+  // The useCallback allows the function to be recreated on every render
+  const fetchCoinDetails = useCallback(async (coinId) => {
+    setLoading(true);
+    const options = {
+      method: 'GET',
+      url: `https://coinranking1.p.rapidapi.com/coin/${coinId}`,
+      headers: {
+        'x-rapidapi-key': '0d93fb5ea1msh5470af294a84a62p1b2147jsn2376be21262b',
+        'x-rapidapi-host': 'coinranking1.p.rapidapi.com'
+      }
+    };
+
+    try {
+      const response = await axios.request(options);
+      setCryptoDetails(response?.data?.data?.coin);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  }, []);
+  
   const contextValue = {
     cryptoData,
     loading,
@@ -57,7 +78,7 @@ const CryptoContextProvider = (props) => {
     cryptoCoins,
     setCryptoCoins,
     cryptoDetails,
-    setCryptoDetails
+    fetchCoinDetails
   }
 
   return (
