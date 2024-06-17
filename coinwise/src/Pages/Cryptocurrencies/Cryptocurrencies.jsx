@@ -20,7 +20,7 @@ const Cryptocurrencies = ({ simplified, count=100 }) => {
   }, [searchCoin, cryptoCoins]);
 
   return (
-    <div className={`${!simplified ? 'min-h-[96vh]' : ''}`}>
+    <div className={`${!simplified ? 'min-h-[96.5vh]' : ''}`}>
       {!simplified && <h2 className='text-2xl mb-3'>Cryptocurrencies</h2>}
       {!simplified && <div className='mb-9 flex justify-center'>
         <input className='border h-9 w-[300px] pl-2 text-sm text-black outline-none' placeholder='Search for coin' onChange={(e)=>setSearchCoin(e.target.value)}/>
