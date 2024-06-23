@@ -8,7 +8,7 @@ const CryptoDetails = () => {
 
   const { coinId } = useParams();
   const time = ['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y']
-  const [timePeriod, setTimePeriod] = useState('7d')
+  const [timePeriod, setTimePeriod] = useState('1y')
 
 
   const { cryptoDetails, fetchCoinDetails, coinHistory, fetchCryptoHistory } = useContext(CryptoContext);
@@ -37,8 +37,6 @@ const CryptoDetails = () => {
             </div>
 
             <hr className='mb-6'/>
-           <div className='md:flex'>
-            <div className='md:w-[70%]'>
               <select
                 className='border px-4 py-1 mb-7 text-base outline-none'
                 defaultValue='7 days'
@@ -50,7 +48,9 @@ const CryptoDetails = () => {
               </select>
 
               <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name} />
-
+          
+          <div className='md:flex'>
+            <div className='md:w-[70%]'>
               <div className='w-[86%] m-auto md:m-0 mb-8 md:mb-16 md:w-[60%]'>
                 <p className='text-center mb-2 flex justify-between py-1 px-1 border'>Rank: <span className='font-bold'>{millify(cryptoDetails.rank)}</span></p>
                 <p className='text-center mb-2 flex justify-between py-1 px-1 border'>Price: <span className='font-bold'>${millify(cryptoDetails.price)}</span></p>

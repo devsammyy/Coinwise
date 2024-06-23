@@ -79,6 +79,15 @@ const CryptoContextProvider = (props) => {
     const options = {
       method: 'GET',
       url: `https://coinranking1.p.rapidapi.com/coin/${coinId}/history`,
+      params: {
+        referenceCurrencyUuid: 'yhjMzLPhuIDl',
+        timePeriod: timePeriod,
+        tiers: '1',
+        orderBy: 'marketCap',
+        orderDirection: 'desc',
+        limit: '50',
+        offset: '0'
+      },
       headers: {
         'x-rapidapi-key': '0d93fb5ea1msh5470af294a84a62p1b2147jsn2376be21262b',
         'x-rapidapi-host': 'coinranking1.p.rapidapi.com'
@@ -87,7 +96,7 @@ const CryptoContextProvider = (props) => {
 
     try {
       const response = await axios.request(options);
-      setCoinHistory(response?.data?.data?.history)
+      setCoinHistory(response?.data?.data)
     } catch (error) {
       setError(error.message);
     }
