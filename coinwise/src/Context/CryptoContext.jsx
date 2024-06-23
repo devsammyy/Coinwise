@@ -17,7 +17,6 @@ const CryptoContextProvider = (props) => {
 
   // This state will save each coin history so it can be used in the line chart componebt
   const [coinHistory, setCoinHistory] = useState(null);
-  console.log(coinHistory)
 
 
   useEffect(() => {

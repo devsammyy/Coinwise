@@ -14,7 +14,7 @@ const Home = ({ setMenu }) => {
   if (error) return <div className='min-h-[81.2vh] text-2xl'>Error: {error.message}</div>;
 
   return (
-    <div id='/home' className='min-h-[96.5vh]'>
+    <div id='/home' className='min-h-[97vh]'>
       <h2 className='text-2xl mb-3'>Global Crypto Stats</h2>
       <div className='text-grayLight w-full grid grid-cols-1 gap-2 md:gap-5 md:grid-cols-2 lg:grid-cols-3'>
         <div className='w-full bg-slate-300 px-3 py-1'>
