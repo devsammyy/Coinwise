@@ -15,6 +15,11 @@ const CryptoContextProvider = (props) => {
   // This state will save the coinId of any coin that is clicked
   const [cryptoDetails, setCryptoDetails] = useState(null);
 
+  // This state will save each coin history so it can be used in the line chart componebt
+  const [coinHistory, setCoinHistory] = useState(null);
+  console.log(coinHistory)
+
+
   useEffect(() => {
     // Create a function to make API request
     const fetchCoinData = async () => {
@@ -23,16 +28,12 @@ const CryptoContextProvider = (props) => {
       const options = {
         method: 'GET',
         url: 'https://coinranking1.p.rapidapi.com/coins',
-        params: {
-          referenceCurrencyUuid: 'yhjMzLPhuIDl'
-        },
         headers: {
           'x-rapidapi-key': '0d93fb5ea1msh5470af294a84a62p1b2147jsn2376be21262b',
           'x-rapidapi-host': 'coinranking1.p.rapidapi.com'
         }
       };
       
-      // Use axios to make API request
       try {
         const response = await axios.request(options);
         setcryptoData(response?.data?.data);
@@ -44,9 +45,9 @@ const CryptoContextProvider = (props) => {
       }
     }
 
-    // Call the fetchCoinData function
     fetchCoinData();
   }, [])
+  
 
   // Fetch details for a specific coin
   // The useCallback allows the function to be recreated on every render
@@ -70,6 +71,27 @@ const CryptoContextProvider = (props) => {
       setError(error);
     }
   }, []);
+
+
+  // Function to fetch crypto history
+  const fetchCryptoHistory = useCallback(async (coinId, timePeriod) => {
+    setLoading(true);
+    const options = {
+      method: 'GET',
+      url: `https://coinranking1.p.rapidapi.com/coin/${coinId}/history`,
+      headers: {
+        'x-rapidapi-key': '0d93fb5ea1msh5470af294a84a62p1b2147jsn2376be21262b',
+        'x-rapidapi-host': 'coinranking1.p.rapidapi.com'
+      }
+    };
+
+    try {
+      const response = await axios.request(options);
+      setCoinHistory(response?.data?.data?.history)
+    } catch (error) {
+      setError(error.message);
+    }
+  }, []);
   
   const contextValue = {
     cryptoData,
@@ -78,7 +100,9 @@ const CryptoContextProvider = (props) => {
     cryptoCoins,
     setCryptoCoins,
     cryptoDetails,
-    fetchCoinDetails
+    fetchCoinDetails,
+    coinHistory,
+    fetchCryptoHistory,
   }
 
   return (
