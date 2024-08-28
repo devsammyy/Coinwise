@@ -23,7 +23,7 @@ const CryptoContextProvider = (props) => {
     // Create a function to make API request
     const fetchCoinData = async () => {
       // This code snippet is gotten from rapidAPI
-      // Paste the cpoied code and use it to make the API call 
+      // Paste the copied code and use it to make the API call 
       const options = {
         method: 'GET',
         url: 'https://coinranking1.p.rapidapi.com/coins',

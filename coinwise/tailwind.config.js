@@ -11,9 +11,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        primaryBg: '#000000',
+        primaryBg: '#00001a',
         primaryColor: '#47a3ff',
         grayLight: '#424242',
+        grayBg: '#0000003f'
       },
       boxShadow: {
         customShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
