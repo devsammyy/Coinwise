@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: ../coinwise
           
   deploy:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
         with:
           app-name: 'coinwise'
           slot-name: 'Production'
-          package: .
+          package: ../coinwise
 
           
   close_pull_request_job:
