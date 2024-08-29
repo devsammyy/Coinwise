@@ -42,7 +42,7 @@ const Home = ({ setMenu }) => {
       <div className='mt-5 md:mt-14'>
         <div className='flex items-baseline justify-between'>
           <h2 className='text-sm mb-4 md:text-xl md:mb-4'>Top 10 Cryptocurrencies In The World</h2>
-          <h2 className='text-xs md:text-sm text-primaryColor cursor-pointer' onClick={() => setMenu('cryptocurriencies')}><Link to={'/cryptocurrencies'}>Show more</Link></h2>
+          <h2 className='text-xs md:text-sm text-primaryColor cursor-pointer' onClick={() => setMenu('Cryptocurrencies')}><Link to={'/cryptocurrencies'}>Show more</Link></h2>
         </div>
         <Cryptocurrencies simplified count={10} />
       </div>

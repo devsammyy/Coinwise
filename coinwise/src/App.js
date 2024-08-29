@@ -11,7 +11,9 @@ import CryptoContextProvider from './Context/CryptoContext'
 
 const App = () => {
   const [menu, setMenu] = useState('Home');
+
   const [showMenu, setShowMenu] = useState(false);
+
   return (
     <div className='h-[100vh] w-full bg-white' id='main'>
       <div>

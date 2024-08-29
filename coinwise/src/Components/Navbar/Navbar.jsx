@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 
 const Navbar = ({menu, setMenu, showMenu, setShowMenu}) => {
-  console.log(menu)
+
   const navigation = [
     {
       name: 'Home',
@@ -16,11 +16,13 @@ const Navbar = ({menu, setMenu, showMenu, setShowMenu}) => {
       path: '/cryptocurrencies'
     }
   ]
+
   const handleNav = (name) => {
     const selectedNav = navigation.find(nav => (nav.name === name))
-    setMenu(selectedNav)
+    setMenu(selectedNav.name)
     setShowMenu(false)
   }
+
   return (
     <>
       <div className='w-full h-[55px] pt-3 md:py-20'>
