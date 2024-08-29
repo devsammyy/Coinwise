@@ -61,5 +61,5 @@ jobs:
         with:
           app-name: 'coinwise'
           slot-name: 'Production'
-          package: .
+          package: ./coinwise
           
